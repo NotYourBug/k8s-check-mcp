@@ -34,9 +34,9 @@ MCP Server 只提供读为主的排障接口，建议配合最小权限 RBAC 与
 
 ## 目录结构（最小可运行）
 
-- `k8s_inspector/mcp_server.py`
-- `requirements-mcp.txt`
-- `README-MCP.md`
+- `mcp_server.py`
+- `requirements.txt`
+- `README.md`
 
 `mcp_server.py` 设计为“单文件自包含”：内置资源单位换算、阈值读取、Pod 异常识别等逻辑，可单独拷贝到新目录运行。
 
@@ -50,7 +50,7 @@ MCP Server 只提供读为主的排障接口，建议配合最小权限 RBAC 与
 ## 安装
 
 ```bash
-pip install -r requirements-mcp.txt
+pip install -r requirements.txt
 ```
 
 ## 运行
@@ -63,7 +63,7 @@ Windows PowerShell：
 $env:MCP_K8S_KUBECONFIG="C:\Users\your-user\.kube\config"
 $env:MCP_K8S_CONTEXT="your-context"
 $env:MCP_K8S_VERIFY_SSL="true"
-python -m k8s_inspector.mcp_server
+python mcp_server.py
 ```
 
 Linux/macOS：
@@ -72,7 +72,7 @@ Linux/macOS：
 export MCP_K8S_KUBECONFIG="$HOME/.kube/config"
 export MCP_K8S_CONTEXT="your-context"
 export MCP_K8S_VERIFY_SSL="true"
-python -m k8s_inspector.mcp_server
+python mcp_server.py
 ```
 
 ### 2) 集群内模式（InClusterConfig）
@@ -80,7 +80,7 @@ python -m k8s_inspector.mcp_server
 ```bash
 export MCP_K8S_IN_CLUSTER="true"
 export MCP_K8S_VERIFY_SSL="true"
-python -m k8s_inspector.mcp_server
+python mcp_server.py
 ```
 
 ## 配置
